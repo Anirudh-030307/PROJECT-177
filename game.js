@@ -16,20 +16,16 @@ function getTemplates() {
 }
 
 function fillBlanks(randomWord) {
-    //Make sure blanks are empty to begin with
     $("#blanks").empty();
 
-    //Show blanks uisng <span>
     for (let i = 0; i < randomWord.inputs; i++) {
         let input_html = `<span class="fill_blanks" id="input_${i}">_</span>`
         $("#blanks").append(input_html)
     }
 
-    //Show Hint
     $("#hint").html(randomWord.category)
 
     var gameOver = false
-    //Fill blanks only if the character match is found
     $(".clickable").click(function () {
         var correctGuess = false;
 
@@ -43,7 +39,6 @@ function fillBlanks(randomWord) {
                     $(".fill_blanks").eq(i).html(id);
                     correctGuess = true;
 
-                    //Check if the word guess is complete
                     if ($("#blanks").text() === randomWord.word.toLowerCase()) {
                         $("#result").text("You Win!!")
                         correctGuess = true;
@@ -64,4 +59,3 @@ function fillBlanks(randomWord) {
         }
     })
 }
-
